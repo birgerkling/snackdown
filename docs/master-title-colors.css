@@ -1,0 +1,12 @@
+.master-tier-1{--title-metal:#e4a573;--title-glow:#b66f3d55}
+.master-tier-2{--title-metal:#dce5f1;--title-glow:#b7cfeb55}
+.master-tier-3{--title-metal:#ffdc66;--title-glow:#ffc83d66}
+.master-tier-4{--title-metal:#bdf6ff;--title-glow:#80e8ff66}
+.master-title-text{color:var(--title-metal,#ffdd7d);text-shadow:0 0 12px var(--title-glow,transparent)}
+.master-list .master-title-text{font-weight:700;font-size:18px;line-height:1.4}
+.master-title[class*="master-tier-"]{position:relative;color:var(--title-metal);border-color:var(--title-metal);background:linear-gradient(115deg,#41304e,#20243b);box-shadow:inset 0 0 22px var(--title-glow),0 0 16px var(--title-glow)}
+.master-tier-4.master-title-text,.master-tier-4 .master-title-text{color:#bdf6ff;background:linear-gradient(110deg,#8ed6ff 0%,#e3fbff 18%,#b4c8ff 32%,#fff 45%,#fff 49%,#8fefff 60%,#e7d3ff 76%,#8ed6ff 100%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:masterDiamondShine 4s linear infinite;text-shadow:none;filter:drop-shadow(0 0 5px #9ceaff66)}
+.master-title.master-tier-4:after{content:'✧';position:absolute;right:12px;top:0;color:#e9ffff;font-size:24px;animation:masterDiamondSparkle 2.8s ease-in-out infinite;pointer-events:none}
+@keyframes masterDiamondShine{from{background-position:125% 50%}to{background-position:-125% 50%}}
+@keyframes masterDiamondSparkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.master-tier-4.master-title-text,.master-tier-4 .master-title-text,.master-title.master-tier-4:after{animation:none}}

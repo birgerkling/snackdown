@@ -1,0 +1,20 @@
+const SEASONINGS=[
+{name:'Golden Crust',note:'Take 15% less enemy damage while below 50% health.'},
+{name:'Fresh Roll',note:'Heal for 25% of the damage you deal to enemies.'},
+{name:'Last Bite',note:'Deal 20% more damage while below 50% health.'},
+{name:'Buttered Toast',note:'Up to 4 Bread Burst pieces per visible enemy gain homing, chosen by the closest available firing directions. Unassigned pieces fly straight. Walls and the 3-hit limit still apply.'},
+{name:'Extra Spicy',note:'Your burn ticks and burning Super zone deal 25% more damage.'},
+{name:'Sugar Ricochet',note:'Your main attack can bounce one extra time.'},
+{name:'Deep Chill',note:'Main-attack slows last 0.6 seconds longer.'},
+{name:'Baking Powder',note:'Your main attack and Super bombs have a 20% larger blast radius.'}
+];
+function hasSnackSeasoning(food){return player?.food===food&&(saved.seasonings.includes(food)||practice&&seasoningTrial)}
+function buySeasoning(food){if(!Number.isInteger(food)||!SEASONINGS[food]||saved.seasonings.includes(food))return false;if(!isSnackUnlocked(food))return toast('Unlock '+foods[food].name+' first.');if((saved.levels[food]||0)<4){toast('Reach level 4 on '+foods[food].name+' first.');return false}if(saved.shards.red<SEASONING_PRICE)return toast('You need 200 red shards.');saved.shards.red-=SEASONING_PRICE;saved.seasonings.push(food);save();seasoningsMenu();sfx('pickup');toast(SEASONINGS[food].name.toUpperCase()+' UNLOCKED!');return true}
+buyButteredToast=function(){return buySeasoning(3)};
+seasoningsMenu=function(){modal(`<div class="eyebrow">LEVEL 4 · 200 RED SHARDS EACH</div><h1>Seasonings</h1><p>Every snack has its own permanent passive ability. Buy it when that snack reaches level 4, or try it free in training.</p><div class="shard-wallet-inline"><span class="shard-chip red">◆ ${saved.shards.red} RED</span></div><div class="cards">${foods.map((f,i)=>`<div class="card"><small>${f.name.toUpperCase()} ONLY</small>${portrait(i)}<h2>${SEASONINGS[i].name}</h2><p>${SEASONINGS[i].note}</p><button class="cta" ${saved.seasonings.includes(i)||!isSnackUnlocked(i)||(saved.levels[i]||0)<4?'disabled':''} onclick="buySeasoning(${i})">${saved.seasonings.includes(i)?'OWNED · PASSIVE ACTIVE ✓':!isSnackUnlocked(i)?'SNACK LOCKED':(saved.levels[i]||0)<4?'LEVEL 4 REQUIRED':'BUY FOR '+f.name.toUpperCase()+' · 200 RED'}</button><button class="text-button" onclick="trySeasoning(${i})">TRY IN TRAINING →</button></div>`).join('')}</div>`)};
+function trySeasoning(food){if(!SEASONINGS[food])return;seasoningTrial=true;trySnack(food);charge=100;toast('TRYING '+SEASONINGS[food].name.toUpperCase()+' · SUPER READY')}
+tryButteredToast=function(){trySeasoning(3)};
+const allSeasonBuffs=buffs;buffs=function(){allSeasonBuffs();if(saved.selected!==3){let i=saved.selected;$('content').insertAdjacentHTML('beforeend',`<div class="row"><div><b>SEASONING · ${SEASONINGS[i].name}</b><small style="display:block">${SEASONINGS[i].note}</small></div><span>${saved.seasonings.includes(i)?'ACTIVE ✓':'200 RED'}</span></div><button class="secondary" onclick="seasoningsMenu()">SEASONINGS</button>`)}};
+const allSeasonHurt=hurt;hurt=function(a,n,owner){let hp=a.hp;if(a===player&&owner&&owner!==player&&hasSnackSeasoning(0)&&a.hp<a.max*.5)n*=.85;if(owner===player){if(hasSnackSeasoning(2)&&owner.hp<owner.max*.5)n*=1.2;if(hasSnackSeasoning(4)&&statusTick)n*=1.25}allSeasonHurt(a,n,owner);if(owner===player&&a!==player&&hp>a.hp){if(hasSnackSeasoning(1)&&owner.alive)owner.hp=Math.min(owner.max,owner.hp+Math.min(hp,hp-a.hp)*.25);if(hasSnackSeasoning(6)&&!statusTick&&a.alive&&a.slowUntil>elapsed)a.slowUntil=Math.max(a.slowUntil,elapsed+2.2)}};
+const allSeasonShoot=shoot;shoot=function(a,angle,superShot=false){let before=shots.length;allSeasonShoot(a,angle,superShot);if(a===player&&a.food===5&&!superShot&&hasSnackSeasoning(5))for(let shot of shots.slice(before))if(shot.owner===a)shot.bounces=(shot.bounces||0)+1};
+const allSeasonBerry=launchBerry;launchBerry=function(owner,...args){let before=muffinBombs.length;allSeasonBerry(owner,...args);if(owner===player&&hasSnackSeasoning(7))for(let bomb of muffinBombs.slice(before))bomb.radius*=1.2};
