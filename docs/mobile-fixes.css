@@ -51,3 +51,11 @@
  #lobby,#newLobby{height:var(--mobile-view-height,100vh)}
  article{max-height:calc(var(--mobile-view-height,100vh) - 32px)}
 }
+
+/* Keep the world label out of the touch-control area, even with long names. */
+@media(max-width:1200px) and (max-height:1040px),(pointer:coarse){
+ #arena #worldArenaBadge{top:68px!important;bottom:auto!important;left:12px!important;transform:none!important;max-width:calc(100% - 142px)!important;padding:3px 8px!important;font-size:11px!important;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+}
+
+@media(min-width:701px) and (max-width:1200px){#arena #worldArenaBadge{top:92px!important}}
+
