@@ -4,7 +4,7 @@ An original food-themed arena game for the browser.
 
 ## Play
 
-The intended GitHub Pages address is https://birgerkling.github.io/snackdown/ (available after Pages is enabled).
+[Play Snackdown in your browser](https://birgerkling.github.io/snackdown/) — no GitHub or ChatGPT sign-in required.
 
 ## Controls
 
