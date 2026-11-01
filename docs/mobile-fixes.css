@@ -1,0 +1,27 @@
+/* Compact landscape menus remain reachable above the Play row. */
+@media(orientation:landscape) and (max-height:500px) and (max-width:950px){
+ #newLobby .left-rail,#newLobby .right-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:156px;top:130px;bottom:auto;gap:6px}
+ #newLobby .left-rail{left:12px;grid-template-columns:repeat(3,minmax(0,1fr));width:225px}#newLobby .right-rail{right:12px}
+ #newLobby .left-rail>button,#newLobby .right-rail>button{width:100%;height:44px;min-height:44px;padding:3px 4px;font-size:10px;line-height:1.05;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px}
+ #newLobby .left-rail>button>span,#newLobby .right-rail>button>span{font-size:17px;margin:0}
+ #newLobby .right-rail .mini-orb{width:22px;height:22px;min-width:22px;margin:0}
+ #newLobby .left-rail .pumpkin-core-button small{display:none}
+ #newLobby .lobby-bottom{bottom:7%;min-height:67px;gap:9px;left:12px;right:12px}
+ #newLobby .lobby-bottom>button{min-height:67px}
+ #newLobby .hero-display{left:24%;right:24%}
+ #newLobby .hero-button{max-width:100%}
+}
+@media(orientation:landscape) and (max-height:360px) and (max-width:950px){
+ #newLobby .left-rail{grid-template-columns:repeat(3,minmax(0,1fr));width:225px}
+ #newLobby .left-rail,#newLobby .right-rail{top:101px}
+ #newLobby .shard-wallet{top:65px;gap:4px}
+ #newLobby .shard-chip{padding:3px 7px;font-size:14px;min-width:48px}
+ #newLobby .lobby-bottom{bottom:7%}
+}
+@media(orientation:portrait) and (max-width:600px){
+ #arena:has(#bossFightHUD:not([hidden])) .hud{top:112px}
+ #arena:has(#bossFightHUD:not([hidden])) #minimap{top:170px}
+}
+@media(orientation:landscape) and (max-height:500px) and (max-width:740px){
+ #newLobby .hero-name{bottom:calc(4% + 20px)}
+}

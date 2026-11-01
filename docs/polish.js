@@ -37,7 +37,7 @@ const fxDraw=draw;draw=function(){fxDraw();ctx.save();ctx.scale(scale,scale);ctx
 // Keep simulation and controls responsive during storms, even on slower devices.
 let simTime=0;loop=function(t){if(!playing)return;let dt=Math.min(.1,Math.max(0,(t-last)/1000));last=t;if(!paused){simTime+=dt;let steps=0;while(simTime>=1/60&&steps++<6&&playing){update(1/60);simTime-=1/60}draw()}else simTime=0;if(playing)raf=requestAnimationFrame(loop)};
 let stormGuide=document.createElement('div');stormGuide.id='stormGuide';stormGuide.hidden=true;stormGuide.innerHTML='<span id="stormArrow">➜</span><div>SAUCE STORM<small>MOVE TO THE SAFE ZONE</small></div>';$('arena').appendChild(stormGuide);
-stick.addEventListener('lostpointercapture',()=>{joy={x:0,y:0};stick.firstElementChild.style.transform=''});$('fire').addEventListener('lostpointercapture',()=>pointer=false);document.addEventListener('visibilitychange',()=>{if(document.hidden){keys={};pointer=false;joy={x:0,y:0};if(playing&&!paused)pauseGame()}});
+stick.addEventListener('lostpointercapture',stopMovementPointer);$('fire').addEventListener('lostpointercapture',stopAttackPointer);document.addEventListener('visibilitychange',()=>{if(document.hidden){keys={};resetTouchInput();if(playing&&!paused)pauseGame()}});
 const fxHome=home;home=function(){simTime=0;fxHome()};
 refreshLobby();
 
