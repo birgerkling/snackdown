@@ -90,3 +90,19 @@
  #newLobby .big-play>span{font-size:38px}
  #newLobby .big-play>small{font-size:8px}
 }
+/* Compact dialog controls for phones held sideways. Combat controls stay separate. */
+@media(orientation:landscape) and (max-height:550px) and (max-width:1200px){
+ #modal{padding:10px}
+ #modal>article{padding:24px 20px;max-height:calc(100dvh - 20px)}
+ #modal .cta,#modal .secondary{font-size:17px;line-height:1.15;padding:7px 14px;min-height:44px;margin-top:8px}
+ #modal .text-button,#modal .try-snack{font-size:13px;line-height:1.2;padding:6px 10px;min-height:44px;margin-top:6px}
+ #modal .close{font-size:30px;min-height:44px;width:44px;right:6px;top:3px}
+ #modal h1{font-size:30px}
+ #modal h2{font-size:22px}
+ #modal p{font-size:16px;margin:10px 0;line-height:1.35}
+ #modal .eyebrow{font-size:11px;letter-spacing:2px;margin-bottom:7px}
+ #modal .row{font-size:18px;padding:10px 0;gap:12px}
+ #modal .cards{gap:10px;margin-top:16px}
+ #modal .card{padding:12px 8px}
+ #modal .reset-actions{gap:8px}
+}
