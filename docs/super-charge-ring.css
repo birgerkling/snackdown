@@ -1,0 +1,4 @@
+#super{background:radial-gradient(circle at center,#275caa 0 55%,transparent 57%),conic-gradient(from 0deg,#ffdf4c var(--super-fill,0%),#344d7b 0)!important;border-color:#91b2e4}
+#super #charge.super-numeric{display:none!important}
+#super.super-full{background:radial-gradient(at 35% 25%,#fff099,#ffd135 65%,#eea819)!important;color:#453019;border-color:#fff19a}
+#super.super-full small{color:#453019}
