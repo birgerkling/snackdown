@@ -40,8 +40,9 @@ const kiwiHome=home;home=function(...args){clearKiwiMatch();return kiwiHome(...a
 CHEF_CARD_EMBLEMS.push({id:'snack-master-'+KIWI,name:'Kiwi Master',icon:'🥝',requirement:{kind:'snackMaster',amount:1,food:KIWI}});
 const kiwiBuffs=buffs;buffs=function(){if(saved.selected!==KIWI)return kiwiBuffs();let factor=1+(saved.levels[KIWI]||0)*.2;modal(`<div class="eyebrow">EPIC · POWER ${saved.levels[KIWI]}</div><h1>KIWI</h1><p>The Combo Assassin</p><div class="upgrade-layout">${portrait(KIWI)}<div><p>${KIWI_DESCRIPTION}</p><div class="row">Health <b>${stats(KIWI).hp}</b></div><div class="row">Combo damage <b>${KIWI_COMBO_DAMAGE.map(n=>n*factor).join(' → ')}</b></div><div class="row">Ammo / reload <b>3 / 1 SECOND</b></div><div class="row">Combo window <b>3 SECONDS PER HIT</b></div><button class="cta" onclick="upgrade()">UPGRADE</button><button class="secondary" onclick="trySnack(${KIWI})">TRY IN TRAINING</button></div></div><h2>TOPPING · SECOND WIND</h2><p>${TOPPINGS[KIWI].note}</p><button class="secondary" onclick="toppingsMenu()">TOPPINGS</button><h2>SEASONING · RIPE FINISH</h2><p>${SEASONINGS[KIWI].note}</p><button class="secondary" onclick="seasoningsMenu()">SEASONINGS</button>`)};
 
-spriteImages[KIWI]=new Image();spriteImages[KIWI].src='assets/kiwi-v1.svg';spriteImages[KIWI].onload=()=>{refreshLobby();if(playing)draw()};refreshLobby();save();
-const kiwiPortraitBase=portrait;portrait=function(i,cls=''){return i===KIWI?`<img class="snack-art ${cls}" src="assets/kiwi-v1.svg" alt="Kiwi" draggable="false">`:kiwiPortraitBase(i,cls)};
+spriteImages[KIWI]=new Image();spriteImages[KIWI].src='assets/kiwi-v2.png';spriteImages[KIWI].onload=()=>{refreshLobby();if(playing)draw()};refreshLobby();save();
+const kiwiPortraitBase=portrait;portrait=function(i,cls=''){return i===KIWI?`<img class="snack-art ${cls}" src="assets/kiwi-v2.png" alt="Kiwi" draggable="false">`:kiwiPortraitBase(i,cls)};
 const kiwiChefArt=chefDefaultArt;chefDefaultArt=function(i){return i===KIWI?portrait(KIWI):kiwiChefArt(i)};
 refreshLobby();
+
 
