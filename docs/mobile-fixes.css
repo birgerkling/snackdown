@@ -1,5 +1,5 @@
 /* Compact landscape menus remain reachable above the Play row. */
-@media(orientation:landscape) and (max-height:500px) and (max-width:1200px){
+@media(orientation:landscape) and (max-height:650px) and (max-width:1200px){
  #newLobby .left-rail,#newLobby .right-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:156px;top:130px;bottom:auto;gap:6px}
  #newLobby .left-rail{left:12px;grid-template-columns:repeat(3,minmax(0,1fr));width:225px}#newLobby .right-rail{right:12px}
  #newLobby .left-rail>button,#newLobby .right-rail>button{width:100%;height:44px;min-height:44px;padding:3px 4px;font-size:10px;line-height:1.05;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px}
@@ -22,7 +22,7 @@
  #arena.boss-fight-active .hud{top:112px}
  #arena.boss-fight-active #minimap{top:170px}
 }
-@media(orientation:landscape) and (max-height:500px) and (max-width:740px){
+@media(orientation:landscape) and (max-height:650px) and (max-width:740px){
  #newLobby .hero-name{bottom:calc(4% + 20px)}
 }
 /* Messages report actions without swallowing another finger's input. */
@@ -59,3 +59,34 @@
 
 @media(min-width:701px) and (max-width:1200px){#arena #worldArenaBadge{top:92px!important}}
 
+/* Reserve the actual bottom-card height, including wrapped road labels. */
+@media(min-height:551px){
+ #newLobby .left-rail{bottom:var(--lobby-bottom-clearance,calc(9% + 180px));grid-template-rows:repeat(5,minmax(64px,1fr));overflow-y:auto;overflow-x:visible;max-height:460px;padding-bottom:6px}
+ #newLobby .left-rail>button{min-height:64px}
+}
+@media(min-height:551px) and (min-width:601px){
+ #newLobby .left-rail>button{font-size:14px;padding:5px 6px}
+ #newLobby .left-rail>button>span{font-size:24px;margin-bottom:3px}
+ #newLobby .left-rail .pumpkin-core-button small{font-size:9px}
+}
+@media(min-height:551px) and (max-width:600px) and (orientation:portrait){
+ #newLobby .left-rail{grid-template-rows:repeat(5,minmax(56px,1fr))}
+ #newLobby .left-rail>button{min-height:56px}
+}
+@media(min-height:551px){#newLobby .left-rail{padding-right:14px;margin-right:-14px}}
+
+@media(orientation:landscape) and (max-height:650px) and (max-width:1200px){
+ #newLobby .left-rail{bottom:auto;max-height:none;grid-template-rows:repeat(2,44px);padding:0;margin-right:0;overflow:visible}
+ #newLobby .left-rail>button{min-height:44px;font-size:10px;padding:3px 4px}
+ #newLobby .left-rail>button>span{font-size:17px;margin:0}
+ #newLobby .lobby-bottom{height:78px;min-height:78px}
+ #newLobby .lobby-bottom>button{height:78px;min-height:78px;padding:6px 8px}
+ #newLobby .road-chip .road-star,#newLobby .mode-card .mode-skull,#newLobby .mode-card small,#newLobby #mapLabel{display:none}
+ #newLobby .road-chip>div{min-width:0}
+ #newLobby .road-chip small{font-size:8px;letter-spacing:1px}
+ #newLobby .road-chip b{font-size:12px}
+ #newLobby .road-free-badge{font-size:8px;padding:3px}
+ #newLobby .mode-card b{font-size:18px}
+ #newLobby .big-play>span{font-size:38px}
+ #newLobby .big-play>small{font-size:8px}
+}
