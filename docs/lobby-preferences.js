@@ -1,10 +1,11 @@
 let restoringLobbyPreferences=false;
 function rememberLobbyPreferences(){
- if(restoringLobbyPreferences||tutorialRun||Number.isInteger(saved.tutorialTourStep)||skinTrialId!==null)return;
+ if(!lobbyCatalogReady||restoringLobbyPreferences||tutorialRun||Number.isInteger(saved.tutorialTourStep)||skinTrialId!==null)return;
  saved.lastSnack=saved.selected;
  saved.lastGameMode=bossMode?'boss':halloweenMode?'halloween':practice?'training':rankedMode?'ranked':'solo';
 }
 function restoreLobbyPreferences(snack=saved.lastSnack){
+ if(!lobbyCatalogReady)return;
  restoringLobbyPreferences=true;
  try{
   if(Number.isInteger(snack)&&foods[snack]&&isSnackUnlocked(snack))saved.selected=snack;
