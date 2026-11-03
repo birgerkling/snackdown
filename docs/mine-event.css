@@ -15,3 +15,5 @@
 @media(max-width:600px){.mine-hero{gap:12px;padding:10px;grid-template-columns:1fr 1fr}.mine-hero .snack-art{height:200px!important}.mine-hero h2{font-size:28px}.mine-hero p{font-size:15px}.mine-heading{padding-left:10px}}
 @media(max-width:600px){.mine-hero .cta,.mine-hero .secondary{font-size:16px;line-height:1.2;padding:10px 6px;min-height:44px;width:100%}.mine-hero .text-button{font-size:13px;min-height:44px;padding:8px 3px}}
 @media(orientation:landscape) and (max-height:550px){.mine-hero .snack-art{height:180px!important}.mine-hero{margin:12px 0}.mine-hero h2{font-size:28px}}
+
+.mine-bedrock{text-align:center;border-color:#efc77e;background:linear-gradient(125deg,#54432a66,#29374a88)}.mine-bedrock #mineBedrockCountdown{display:block;font-size:56px;line-height:1.1;color:#ffe2a0;font-variant-numeric:tabular-nums;margin:12px 0}.mine-bedrock h2{color:#ffe2a0}
