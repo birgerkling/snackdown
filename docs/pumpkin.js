@@ -1,5 +1,5 @@
 const PUMPKIN=10;
-foods.push({name:'Pumpkin',emoji:'🎃',role:'The Haunted Vanguard',hp:6000,speed:225,damage:900,color:'#ff9a38',charge:20,range:330,attack:'VINE HOOK',super:'HARVEST ROLL'});
+foods.push({name:'Pumpkin',retired:true,emoji:'🎃',role:'The Haunted Vanguard',hp:6000,speed:225,damage:900,color:'#ff9a38',charge:20,range:330,attack:'VINE HOOK',super:'HARVEST ROLL'});
 rarity.push('LIMITED');unlockXP.push(Infinity);blueCharacterPrices.push(Infinity);attacks.push('VINE HOOK');supers.push('HARVEST ROLL');
 descriptions.push('A mobile Halloween tank. Vine Hook deals 900 damage (1,800 at level 5) and pulls enemies slightly closer. Three ammo, 1 second reload. Five hits charge Harvest Roll: roll up to 360 units, stopping at walls, dealing 1,400 damage (2,800 at level 5) once per enemy and gaining 25% damage reduction for 2 seconds.');foods[PUMPKIN].description=descriptions[PUMPKIN];
 TOPPINGS.push({name:'BOO!',note:'Scare nearby enemies into running away for 1 second. Frightened enemies cannot attack or use their Super. Walls block the scare. 10 second cooldown.'});

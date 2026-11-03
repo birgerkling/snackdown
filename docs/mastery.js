@@ -13,6 +13,7 @@ function syncMasterTitles(){
  let sequence=Math.max(0,...Object.values(saved.masterTitleOrder));
  let order=[...new Set([...saved.masterOne,...foods.map((_,i)=>i)])];
  for(let i of order){
+  if(i===10)continue;
   let tier=Math.min(4,Math.floor((saved.snackCalories[i]||0)/1000));
   if(saved.masterOne.includes(i))tier=Math.max(1,tier);
   saved.masterTitles[i]=Math.max(saved.masterTitles[i]||0,tier);
@@ -27,7 +28,7 @@ function hasMasterTitle(food,tier){return Number.isInteger(tier)&&tier>=1&&tier<
 function masterTitleName(food,tier){return tier===1?MASTER_TITLES[food]:HIGHER_MASTER_TITLES[food]?.[tier-2]}
 function masterTitleList(title){
  syncMasterTitles();
- let entries=foods.flatMap((f,food)=>[1,2,3,4].map(tier=>({food,tier,unlocked:hasMasterTitle(food,tier),order:saved.masterTitleOrder[food+':'+tier]||0,remaining:Math.max(0,tier*1000-(saved.snackCalories[food]||0))})));
+ let entries=foods.flatMap((f,food)=>f.retired?[]:[1,2,3,4].map(tier=>({food,tier,unlocked:hasMasterTitle(food,tier),order:saved.masterTitleOrder[food+':'+tier]||0,remaining:Math.max(0,tier*1000-(saved.snackCalories[food]||0))})));
  entries.sort((a,b)=>Number(b.unlocked)-Number(a.unlocked)||(a.unlocked?b.order-a.order:a.remaining-b.remaining)||a.food-b.food||a.tier-b.tier);
  return '<h2>MASTER TITLES · I–IV</h2><p>Newest unlocked titles first. Locked titles are sorted by fewest calories remaining. Reach 1,000 / 2,000 / 3,000 / 4,000 calories on each snack. Titles stay unlocked after calorie losses. Every Master tier also grants a one-time shard reward.</p><button class="text-button" onclick="equipChefTitle(null)">NO TITLE '+(title?'':'✓')+'</button><div class="master-list">'+entries.map(({food:i,tier,unlocked})=>{
   let selected=saved.chefTitle===i&&(saved.chefTitleRank||1)===tier;
@@ -44,7 +45,7 @@ const masteryResults=showCalorieResults;showCalorieResults=function(r){masteryRe
 const masteryFresh=initialProgress;initialProgress=function(){return {...masteryFresh(),masterOne:[],masterTitles:{},chefTitle:null,chefTitleRank:1,mainSnack:3}};
 const masteryRefresh=refreshLobby;refreshLobby=function(){syncMasterTitles();masteryRefresh();$('heroPower').textContent='POWER '+saved.levels[saved.selected]+(masterTitleTier(saved.selected)?' · MASTER '+roman(masterTitleTier(saved.selected)):'')};
 for(let i=0;i<foods.length;i++)grantMasterOne(i);save();
-function chooseMainSnack(){modal(`<div class="eyebrow">YOUR CHEF CARD</div><h1>Choose your main snack</h1><p>Pick the snack shown on your Chef Card.</p><div class="cards snack-cards">${foods.map((f,i)=>{let unlocked=isSnackUnlocked(i);return `<button class="card fighter-card ${saved.mainSnack===i?'selected':''}" ${!unlocked?'disabled':''} onclick="setMainSnack(${i})">${portrait(i)}<h2>${f.name}</h2><small>${!unlocked?'LOCKED':saved.mainSnack===i?'MAIN SNACK ✓':'SET AS MAIN'}</small></button>`}).join('')}</div><button class="text-button" onclick="club()">← CHEF CARD</button>`)}
+function chooseMainSnack(){modal(`<div class="eyebrow">YOUR CHEF CARD</div><h1>Choose your main snack</h1><p>Pick the snack shown on your Chef Card.</p><div class="cards snack-cards">${foods.map((f,i)=>{if(f.retired)return '';let unlocked=isSnackUnlocked(i);return `<button class="card fighter-card ${saved.mainSnack===i?'selected':''}" ${!unlocked?'disabled':''} onclick="setMainSnack(${i})">${portrait(i)}<h2>${f.name}</h2><small>${!unlocked?'LOCKED':saved.mainSnack===i?'MAIN SNACK ✓':'SET AS MAIN'}</small></button>`}).join('')}</div><button class="text-button" onclick="club()">← CHEF CARD</button>`)}
 function setMainSnack(food){if(!Number.isInteger(food)||!isSnackUnlocked(food))return;saved.mainSnack=food;save();club();toast(foods[food].name.toUpperCase()+' IS YOUR MAIN SNACK!')}
 
 
