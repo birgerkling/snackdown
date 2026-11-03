@@ -1,5 +1,5 @@
 const HALLOWEEN_EVENT_END=Date.parse("2026-11-08T00:00:00+01:00");
-let HALLOWEEN_EVENT_ACTIVE=Date.now()<HALLOWEEN_EVENT_END;
+let HALLOWEEN_EVENT_ACTIVE=false; // Archived: replaced by the Crystal Depths event.
 let halloweenMode=false;
 function inHalloweenMatch(){return !!rankedSession?.halloween}
 function selectHalloween(){if(!HALLOWEEN_EVENT_ACTIVE)return;if(playing)home();halloweenMode=true;rankedMode=false;practice=false;closeModal();updateMode();toast('HALLOWEEN KNOCKOUT SELECTED · PRESS PLAY')}

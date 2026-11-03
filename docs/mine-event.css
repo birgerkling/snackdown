@@ -1,0 +1,17 @@
+#newLobby.mine-lobby{background:linear-gradient(0deg,#07141c66,#0c1f2933),url('assets/mine-lobby.png') center/cover no-repeat!important}
+.mine-lobby .kitchen-scene,.mine-lobby .halloween-scenery{opacity:0!important;pointer-events:none}
+.mine-button{border:2px solid #77e6df!important;background:linear-gradient(145deg,#276b70,#24324b)!important;color:#eaffed;box-shadow:0 5px 0 #111b29,0 0 20px #61ddce33}
+.mine-button span{display:block;font-size:28px}.mine-button small{display:block;font-size:10px;color:#a1ffcf}
+.mine-heading{border-left:4px solid #82efda;padding-left:18px}.mine-heading h1{color:#b4ffeb!important}.mine-heading .eyebrow{color:#e4c27a}
+.mine-hero{display:grid;grid-template-columns:minmax(130px,.8fr) 1.2fr;align-items:center;gap:24px;background:radial-gradient(ellipse at 20% 80%,#348a8177,transparent 65%);border:1px solid #70dfd055;border-radius:18px;padding:16px;margin:20px 0}
+.mine-hero .snack-art{max-width:100%;height:280px!important;object-fit:contain}.mine-hero h2{font-size:40px;color:#94ffe0}.mine-hero button{display:block}
+.mine-depth-track{height:14px;border-radius:12px;background:#111b2c;overflow:hidden;border:1px solid #79cfb7}.mine-depth-track i{display:block;height:100%;background:linear-gradient(90deg,#4cb6ba,#beffe2);transition:width .4s}
+.mine-receipt{padding:18px;background:#295d5566;border:2px solid #8ae6cb;border-radius:12px;margin:18px 0}.mine-receipt h2{color:#c0ffe1}
+.mine-mode-card{width:100%;margin-top:18px;border:2px solid #84e9d3;background:linear-gradient(120deg,#173c42,#363247);color:#efffed}
+.mine-intro .match-intro-solo{grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}.mine-intro .chef-card-art{height:150px}.mine-intro .chef-card-name{font-size:15px}.mine-intro .chef-card-title{font-size:10px}.mine-intro .chef-card-signature{padding:6px}.mine-intro .chef-earned-topper{display:none}.mine-intro .chef-power-badge{scale:.75;transform-origin:top right}
+@media(max-width:700px){.mine-intro .match-intro-solo{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.mine-intro .chef-card-art{height:75px}.mine-intro .chef-card-title{display:none}.mine-intro .chef-card-name{font-size:9px}.mine-intro .chef-card-signature{padding:3px}.mine-intro .chef-card-snack{font-size:7px}}
+@media(orientation:landscape) and (max-height:550px){.mine-intro .chef-card-art{height:60px}.mine-intro .match-intro-solo{grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}.mine-intro .chef-card-title{display:none}.mine-intro .chef-card-name{font-size:9px}.mine-intro .chef-card-snack{font-size:7px}.mine-intro .chef-card-signature{padding:3px}.mine-intro .match-intro-content header{margin-bottom:7px}.mine-intro .match-intro-content footer{margin-top:7px}}
+.mine-skin-collection{padding:16px;border:1px solid #69d9cb;border-radius:16px;background:#133a3f55;margin-bottom:24px}.mine-skin-collection .skin-card{display:flex;flex-direction:column}.mine-skin-collection .skin-card .cta{margin-top:auto}
+@media(max-width:600px){.mine-hero{gap:12px;padding:10px;grid-template-columns:1fr 1fr}.mine-hero .snack-art{height:200px!important}.mine-hero h2{font-size:28px}.mine-hero p{font-size:15px}.mine-heading{padding-left:10px}}
+@media(max-width:600px){.mine-hero .cta,.mine-hero .secondary{font-size:16px;line-height:1.2;padding:10px 6px;min-height:44px;width:100%}.mine-hero .text-button{font-size:13px;min-height:44px;padding:8px 3px}}
+@media(orientation:landscape) and (max-height:550px){.mine-hero .snack-art{height:180px!important}.mine-hero{margin:12px 0}.mine-hero h2{font-size:28px}}

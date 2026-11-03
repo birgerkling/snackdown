@@ -1,4 +1,4 @@
-function halloweenIsOpen(now=Date.now()){return now<HALLOWEEN_EVENT_END}
+function halloweenIsOpen(now=Date.now()){return false}
 const timedPumpkinBuy=buyPumpkinCore;buyPumpkinCore=function(...args){if(!halloweenIsOpen()){toast('THE HALLOWEEN EVENT HAS ENDED');return null}return timedPumpkinBuy(...args)};
 const timedHalloweenSelect=selectHalloween;selectHalloween=function(...args){if(!halloweenIsOpen())return toast('THE HALLOWEEN EVENT HAS ENDED');return timedHalloweenSelect(...args)};
 const timedEventStart=start;start=function(...args){if(halloweenMode&&!halloweenIsOpen()){halloweenMode=false;practice=false;rankedMode=false;updateMode();toast('THE HALLOWEEN EVENT HAS ENDED');return}return timedEventStart(...args)};
