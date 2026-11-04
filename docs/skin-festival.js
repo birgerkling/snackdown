@@ -328,7 +328,8 @@ JELLY_SKINS.push(...FESTIVAL_SKINS.filter(s=>s.food===JELLY));
 const festivalJellyMenu=jellySkinsMenu;
 jellySkinsMenu=function(){festivalJellyMenu();const eyebrow=$('content').querySelector('.eyebrow');if(eyebrow)eyebrow.textContent='FIVE WAYS TO WOBBLE'};
 skinShopFilters.food='all';skinShopFilters.rarity='all';
-const festivalFilteredSkins=filteredShopSkins;
+// The unified grid includes owned past-event costumes and current Mine skins.
+const festivalFilteredSkins=limitedFiltered;
 filteredShopSkins=function(){return festivalFilteredSkins().filter(s=>(skinShopFilters.food==='all'||s.food===Number(skinShopFilters.food))&&(skinShopFilters.rarity==='all'||skinRarity(s)===skinShopFilters.rarity)&&!foods[s.food].retired&&(!s.limited||s.mineEvent||halloweenIsOpen()||saved.ownedSkins.includes(s.id)))};
 const festivalSetFilter=setSkinShopFilter;
 setSkinShopFilter=function(kind,value){
