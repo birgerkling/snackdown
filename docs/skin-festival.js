@@ -124,11 +124,11 @@ const FESTIVAL_SKINS=[
   "id": "glaze-arcade",
   "food": 5,
   "rarity": "UNCOMMON",
-  "name": "Arcade Glaze",
-  "asset": "glaze-arcade.webp",
+  "name": "Disco Glaze",
+  "asset": "glaze-disco.webp",
   "price": 130,
-  "color": "#a4a1ff",
-  "note": "Retro headphones, a joystick shield and pixel-bright arcade gear.",
+  "color": "#d49df3",
+  "note": "Mirrored disco-ball gloves, sparkling shoulder pads and platform shoes. Time to glaze the dance floor!",
   "festival": true,
   "atlas": 104
  },
@@ -344,4 +344,5 @@ function festivalSkinCard(s){let owned=saved.ownedSkins.includes(s.id),active=sa
 skinShop=function(){modal('<section class="skin-festival-banner"><div class="eyebrow">THE SKIN FESTIVAL</div><h1>FIVE FLAVORS.<br>EVERY SNACK.</h1><p>13 snacks · 65 permanent costumes · 26 brand-new looks</p><div class="festival-tier-strip">'+Object.keys(SKIN_RARITY_PRICES).filter(r=>r!=='LIMITED').map(r=>'<span class="skin-rarity-badge skin-rarity-'+r.toLowerCase()+'">'+r+' · '+SKIN_RARITY_PRICES[r]+'</span>').join('')+'</div><small>Prices in green shards. Limited event costumes are separate. Your collection stays yours.</small></section><div class="shard-wallet-inline">'+shardWalletMarkup()+'</div>'+skinShopFilterMarkup()+'<div class="cards skin-grid">'+(filteredShopSkins().map(festivalSkinCard).join('')||'<div class="skin-filter-empty"><h2>No skins match these filters</h2><button class="secondary" onclick="resetSkinShopFilters()">SHOW ALL SKINS</button></div>')+'</div><button class="text-button" onclick="roster()">BROWSE SNACKS →</button>')};
 shop=function(){skinShop()};
 SNACKDOWN_UPDATES.unshift({date:'November 4, 2026',label:'LATEST UPDATE',items:[{icon:'🎨',title:'The Skin Festival',text:'26 new costumes! Every playable snack now has one Common, Uncommon, Rare, Epic and Legendary skin: 65 permanent looks. Royal Rise is now Rare to complete Muffin’s collection. Prices are 100 / 130 / 160 / 200 / 500 green shards. Filter the shop by snack or rarity and try every look in training. Limited costumes and previous purchases stay yours.'}]});
+SNACKDOWN_UPDATES[0].items.unshift({icon:'🪩',title:'Disco Glaze takes the floor',text:'A new Uncommon costume with mirrored disco-ball gear and platform shoes replaces Arcade Glaze. Existing owners keep their costume and equipped look automatically. The arcade design is reserved for a future event.'});
 refreshLobby();
