@@ -28,7 +28,7 @@ function hasMasterTitle(food,tier){return Number.isInteger(tier)&&tier>=1&&tier<
 function masterTitleName(food,tier){return tier===1?MASTER_TITLES[food]:HIGHER_MASTER_TITLES[food]?.[tier-2]}
 function masterTitleList(title){
  syncMasterTitles();
- let entries=foods.flatMap((f,food)=>f.retired?[]:[1,2,3,4].map(tier=>({food,tier,unlocked:hasMasterTitle(food,tier),order:saved.masterTitleOrder[food+':'+tier]||0,remaining:Math.max(0,tier*1000-(saved.snackCalories[food]||0))})));
+ let entries=foods.flatMap((f,food)=>[1,2,3,4].filter(tier=>!f.retired||hasMasterTitle(food,tier)).map(tier=>({food,tier,unlocked:hasMasterTitle(food,tier),order:saved.masterTitleOrder[food+':'+tier]||0,remaining:Math.max(0,tier*1000-(saved.snackCalories[food]||0))})));
  entries.sort((a,b)=>Number(b.unlocked)-Number(a.unlocked)||(a.unlocked?b.order-a.order:a.remaining-b.remaining)||a.food-b.food||a.tier-b.tier);
  return '<h2>MASTER TITLES · I–IV</h2><p>Newest unlocked titles first. Locked titles are sorted by fewest calories remaining. Reach 1,000 / 2,000 / 3,000 / 4,000 calories on each snack. Titles stay unlocked after calorie losses. Every Master tier also grants a one-time shard reward.</p><button class="text-button" onclick="equipChefTitle(null)">NO TITLE '+(title?'':'✓')+'</button><div class="master-list">'+entries.map(({food:i,tier,unlocked})=>{
   let selected=saved.chefTitle===i&&(saved.chefTitleRank||1)===tier;
