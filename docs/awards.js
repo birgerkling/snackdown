@@ -1,8 +1,8 @@
 // Highest calorie badge replaces its predecessor. Ranked badges form a permanent collection.
-const OG_AWARD_CUTOFF=Date.parse('2026-11-08T00:00:00+01:00');
+const OG_AWARD_CUTOFF=Date.parse('2026-11-06T00:00:00+01:00');
 const CALORIE_AWARDS=Array.from({length:100},(_,i)=>({id:'calorie-'+(i+1)*1000,family:'calories',amount:(i+1)*1000,name:(i+1)+'K Calorie Champion',short:(i+1)+'K CAL',kind:'fire',color:'hsl('+(39+Math.floor(i/10)*25)+' 85% 73%)',description:'Reach '+((i+1)*1000).toLocaleString('en-US')+' total calories on Calorie Road.'}));
 const RANK_AWARDS=RANKED_TIERS.map((tier,index)=>({id:'ranked-'+tier.name.toLowerCase(),family:'ranked',name:tier.name[0]+tier.name.slice(1).toLowerCase()+' Chef',short:tier.name,kind:'rank',color:tier.color,amount:tier.min,rankIndex:index,description:'Reach '+tier.name+' or higher in Ranked Kitchen.'}));
-const OG_PLAYER_AWARD={id:'og-player',family:'legacy',name:'OG Player',short:'OG',kind:'og',color:'#d3a0ff',description:'An account created during the final five days of Halloween or earlier — before November 8, 2026 at 00:00 CET.'};
+const OG_PLAYER_AWARD={id:'og-player',family:'legacy',name:'OG Player',short:'OG',kind:'og',color:'#d3a0ff',description:'An account created on November 5, 2026 or earlier (Swedish time).'};
 const KITCHEN_AWARDS=[...CALORIE_AWARDS,...RANK_AWARDS,OG_PLAYER_AWARD];
 function awardCreationTime(profile,data=profile?.data){
  let dates=[profile?.createdAt,data?.accountCreatedAt].map(v=>typeof v==='string'?Date.parse(v):Number(v)).filter(v=>Number.isFinite(v)&&v>=1577836800000&&v<4102444800000);
@@ -21,7 +21,7 @@ function syncKitchenAwards(data=saved,profile=accountBook.profiles.find(p=>p.id=
  for(let award of CALORIE_AWARDS)if(award.id!==current?.id)delete data.awards[award.id];
  if(current&&!data.awards[current.id])data.awards[current.id]=now;
  let rankedBest=awardRankBest(data);for(let award of RANK_AWARDS)if(rankedBest>=award.amount&&!data.awards[award.id])data.awards[award.id]=now;
- if(created!==null&&created<OG_AWARD_CUTOFF&&!data.awards[OG_PLAYER_AWARD.id])data.awards[OG_PLAYER_AWARD.id]=now;
+ if(created!==null&&created<OG_AWARD_CUTOFF){if(!data.awards[OG_PLAYER_AWARD.id])data.awards[OG_PLAYER_AWARD.id]=now}else delete data.awards[OG_PLAYER_AWARD.id];
  return data.awards;
 }
 function kitchenAwardIcon(award){

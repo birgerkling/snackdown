@@ -37,4 +37,5 @@ const extraAwardsMenu=awardsMenu;awardsMenu=function(){extraAwardsMenu();let leg
 for(let profile of accountBook.profiles)if(!isDevAccount(profile))syncKitchenAwards(profile.data,profile);
 SNACKDOWN_UPDATES.unshift({date:'November 5, 2026',label:'LATEST UPDATE',items:[{icon:'🏅',title:'More kitchen achievements',text:'Collect a badge for each Serving star, a Full Permanent Menu badge for owning all buyable permanent snacks, and a growing Total Masteries badge. Each Master I–IV title counts once, including earned legacy titles. Swipe the lobby Awards row on small screens to see every category.'}]});
 SNACKDOWN_UPDATES[0].items.push({icon:'✦',title:'Regular Cores: 25% upgrades',text:'Regular Core taps now have a 25% upgrade chance. The opted-in beginner bonus remains 50% for the first two Cores.'});
+SNACKDOWN_UPDATES.unshift({date:'November 6, 2026',label:'LATEST UPDATE',items:[{icon:'👑',title:'OG Player: November 5 or earlier',text:'OG Player now requires an account created on November 5, 2026 or earlier in Swedish time. Accounts created from November 6 onward do not qualify. Existing badges are checked against the corrected date.'}]});
 save();refreshLobby();
