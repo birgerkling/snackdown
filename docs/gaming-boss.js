@@ -37,10 +37,12 @@ function gamingStepBossMovement(s,dt){
  if(d<=step+1){s.moveTarget=null;s.nextMoveAt=elapsed+rand(8,12);b.gamingWalking=false}
 }
 function gamingMarkedDiscs(s){
- // One landing zone per sector prevents a pile of discs around a grouped team.
- let allies=gamingAllies(),margin=110,columns=5,rows=4,cw=(W-margin*2)/columns,ch=(H-margin*2)/rows;
+ // A tighter formation follows the team, with one landing zone per sector.
+ let allies=gamingAllies(),margin=110,columns=5,rows=4,width=(W-margin*2)*.8,height=(H-margin*2)*.8,cw=width/columns,ch=height/rows;
+ let focusX=allies.length?allies.reduce((n,a)=>n+a.x,0)/allies.length:W/2,focusY=allies.length?allies.reduce((n,a)=>n+a.y,0)/allies.length:H/2;
+ let originX=Math.max(margin,Math.min(W-margin-width,focusX-width/2)),originY=Math.max(margin,Math.min(H-margin-height,focusY-height/2));
  for(let row=0;row<rows;row++)for(let col=0;col<columns;col++){
-  let left=margin+col*cw,top=margin+row*ch,cx=left+cw/2,cy=top+ch/2;
+  let left=originX+col*cw,top=originY+row*ch,cx=left+cw/2,cy=top+ch/2;
   let nearby=allies.filter(a=>a.x>=left&&a.x<left+cw&&a.y>=top&&a.y<top+ch).sort((a,b)=>Math.hypot(a.x-cx,a.y-cy)-Math.hypot(b.x-cx,b.y-cy))[0];
   let x=nearby?Math.max(left+cw*.32,Math.min(left+cw*.68,nearby.x)):cx+rand(-cw*.18,cw*.18);
   let y=nearby?Math.max(top+ch*.32,Math.min(top+ch*.68,nearby.y)):cy+rand(-ch*.18,ch*.18);
